@@ -1,17 +1,19 @@
-//
-//  CaseStudy_NavigationApp.swift
-//  CaseStudy-Navigation
-//
-//  Created by ky on 2022/09/23.
-//
-
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct CaseStudy_NavigationApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView {
+                LoadThenNavigateListView(
+                    store: Store(
+                        initialState: LoadThenNavigateListState(),
+                        reducer: loadThenNavigateListReducer,
+                        environment: .init(mainQueue: .main)
+                    )
+                )
+            }
         }
     }
 }

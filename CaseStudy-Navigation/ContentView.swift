@@ -1,26 +1,101 @@
-//
-//  ContentView.swift
-//  CaseStudy-Navigation
-//
-//  Created by ky on 2022/09/23.
-//
-
 import SwiftUI
+import ComposableArchitecture
 
-struct ContentView: View {
+let readMe = """
+THIS is Long Long Text.
+THIS is Long Long Text\
+THIS is Long Long Text
+"""
+
+struct LoadThenNavigateListView: View {
+    let store: Store<LoadThenNavigateListState, LoadThenNavigateListAction>
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+      WithViewStore(self.store) { viewStore in
+        Form {
+          Section(header: Text(readMe)) {
+            ForEach(viewStore.rows) { row in
+              NavigationLink(
+                destination: IfLetStore(
+                  self.store.scope(
+                    state: \.selection?.value,
+                    action: LoadThenNavigateListAction.counter
+                  )
+                ) {
+                  CounterView(store: $0)
+                },
+                tag: row.id,
+                selection: viewStore.binding(
+                  get: \.selection?.id,
+                  send: LoadThenNavigateListAction.setNavigation(selection:)
+                )
+              ) {
+                HStack {
+                  Text("Load optional counter that starts from \(row.count)")
+                  if row.isActivityIndicatorVisible {
+                    Spacer()
+                    ProgressView()
+                  }
+                }
+              }
+            }
+          }
         }
-        .padding()
+        .navigationBarTitle("Load then navigate")
+        .onDisappear { viewStore.send(.onDisappear) }
+      }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        LoadThenNavigateListView(
+            store: Store(
+                initialState: LoadThenNavigateListState(),
+                reducer: loadThenNavigateListReducer,
+                environment: LoadThenNavigateListEnvironment(mainQueue: .main)
+            )
+        )
     }
 }
+        /*
+        struct ContentView: View {
+          let store: Store<LoadThenNavigateListState, LoadThenNavigateListAction>
+
+          var body: some View {
+            WithViewStore(self.store) { viewStore in
+              Form {
+                Section(header: Text(readMe)) {
+                  ForEach(viewStore.rows) { row in
+                    NavigationLink(
+                      destination: IfLetStore(
+                        self.store.scope(
+                          state: \.selection?.value,
+                          action: LoadThenNavigateListAction.counter
+                        )
+                      ) {
+                        CounterView(store: $0)
+                      },
+                      tag: row.id,
+                      selection: viewStore.binding(
+                        get: \.selection?.id,
+                        send: LoadThenNavigateListAction.setNavigation(selection:)
+                      )
+                    ) {
+                      HStack {
+                        Text("Load optional counter that starts from \(row.count)")
+                        if row.isActivityIndicatorVisible {
+                          Spacer()
+                          ProgressView()
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              .navigationBarTitle("Load then navigate")
+              .onDisappear { viewStore.send(.onDisappear) }
+            }
+          }
+        }
+         */
