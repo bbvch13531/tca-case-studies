@@ -9,41 +9,41 @@ THIS is Long Long Text
 
 struct LoadThenNavigateListView: View {
     let store: Store<LoadThenNavigateListState, LoadThenNavigateListAction>
-
+    
     var body: some View {
-      WithViewStore(self.store) { viewStore in
-        Form {
-          Section(header: Text(readMe)) {
-            ForEach(viewStore.rows) { row in
-              NavigationLink(
-                destination: IfLetStore(
-                  self.store.scope(
-                    state: \.selection?.value,
-                    action: LoadThenNavigateListAction.counter
-                  )
-                ) {
-                  CounterView(store: $0)
-                },
-                tag: row.id,
-                selection: viewStore.binding(
-                  get: \.selection?.id,
-                  send: LoadThenNavigateListAction.setNavigation(selection:)
-                )
-              ) {
-                HStack {
-                  Text("Load optional counter that starts from \(row.count)")
-                  if row.isActivityIndicatorVisible {
-                    Spacer()
-                    ProgressView()
-                  }
+        WithViewStore(self.store) { viewStore in
+            Form {
+                Section(header: Text(readMe)) {
+                    ForEach(viewStore.rows) { row in
+                        NavigationLink(
+                            destination: IfLetStore(
+                                self.store.scope(
+                                    state: \.selection?.value,
+                                    action: LoadThenNavigateListAction.counter
+                                )
+                            ) {
+                                CounterView(store: $0)
+                            },
+                            tag: row.id,
+                            selection: viewStore.binding(
+                                get: \.selection?.id,
+                                send: LoadThenNavigateListAction.setNavigation(selection:)
+                            )
+                        ) {
+                            HStack {
+                                Text("Load optional counter that starts from \(row.count)")
+                                if row.isActivityIndicatorVisible {
+                                    Spacer()
+                                    ProgressView()
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          }
+            .navigationBarTitle("Load then navigate")
+            .onDisappear { viewStore.send(.onDisappear) }
         }
-        .navigationBarTitle("Load then navigate")
-        .onDisappear { viewStore.send(.onDisappear) }
-      }
     }
 }
 
@@ -58,44 +58,3 @@ struct ContentView_Previews: PreviewProvider {
         )
     }
 }
-        /*
-        struct ContentView: View {
-          let store: Store<LoadThenNavigateListState, LoadThenNavigateListAction>
-
-          var body: some View {
-            WithViewStore(self.store) { viewStore in
-              Form {
-                Section(header: Text(readMe)) {
-                  ForEach(viewStore.rows) { row in
-                    NavigationLink(
-                      destination: IfLetStore(
-                        self.store.scope(
-                          state: \.selection?.value,
-                          action: LoadThenNavigateListAction.counter
-                        )
-                      ) {
-                        CounterView(store: $0)
-                      },
-                      tag: row.id,
-                      selection: viewStore.binding(
-                        get: \.selection?.id,
-                        send: LoadThenNavigateListAction.setNavigation(selection:)
-                      )
-                    ) {
-                      HStack {
-                        Text("Load optional counter that starts from \(row.count)")
-                        if row.isActivityIndicatorVisible {
-                          Spacer()
-                          ProgressView()
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-              .navigationBarTitle("Load then navigate")
-              .onDisappear { viewStore.send(.onDisappear) }
-            }
-          }
-        }
-         */

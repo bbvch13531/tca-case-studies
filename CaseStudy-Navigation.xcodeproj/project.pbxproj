@@ -12,12 +12,9 @@
 		09028DA628DDF02400B3BBD6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09028DA528DDF02400B3BBD6 /* Assets.xcassets */; };
 		09028DA928DDF02400B3BBD6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09028DA828DDF02400B3BBD6 /* Preview Assets.xcassets */; };
 		098B048128DED96100BA2964 /* LoadThenNavigationFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098B048028DED96100BA2964 /* LoadThenNavigationFeature.swift */; };
-		098B048328DED97100BA2964 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098B048228DED97100BA2964 /* AboutView.swift */; };
 		098B048528DED98200BA2964 /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098B048428DED98200BA2964 /* CounterView.swift */; };
 		098B048728DEDA6800BA2964 /* CounterFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098B048628DEDA6800BA2964 /* CounterFeature.swift */; };
 		098B048A28E061FF00BA2964 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 098B048928E061FF00BA2964 /* ComposableArchitecture */; };
-		098B048C28E0659A00BA2964 /* RootFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098B048B28E0659A00BA2964 /* RootFeature.swift */; };
-		098B048E28E0667B00BA2964 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098B048D28E0667B00BA2964 /* RootView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,11 +24,8 @@
 		09028DA528DDF02400B3BBD6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09028DA828DDF02400B3BBD6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		098B048028DED96100BA2964 /* LoadThenNavigationFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadThenNavigationFeature.swift; sourceTree = "<group>"; };
-		098B048228DED97100BA2964 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		098B048428DED98200BA2964 /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
 		098B048628DEDA6800BA2964 /* CounterFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterFeature.swift; sourceTree = "<group>"; };
-		098B048B28E0659A00BA2964 /* RootFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootFeature.swift; sourceTree = "<group>"; };
-		098B048D28E0667B00BA2964 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,11 +60,8 @@
 			isa = PBXGroup;
 			children = (
 				09028DA128DDF02200B3BBD6 /* CaseStudy_NavigationApp.swift */,
-				098B048D28E0667B00BA2964 /* RootView.swift */,
-				098B048B28E0659A00BA2964 /* RootFeature.swift */,
 				09028DA328DDF02200B3BBD6 /* ContentView.swift */,
 				098B048628DEDA6800BA2964 /* CounterFeature.swift */,
-				098B048228DED97100BA2964 /* AboutView.swift */,
 				098B048428DED98200BA2964 /* CounterView.swift */,
 				098B048028DED96100BA2964 /* LoadThenNavigationFeature.swift */,
 				09028DA528DDF02400B3BBD6 /* Assets.xcassets */,
@@ -163,13 +154,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				098B048E28E0667B00BA2964 /* RootView.swift in Sources */,
-				098B048328DED97100BA2964 /* AboutView.swift in Sources */,
 				09028DA428DDF02200B3BBD6 /* ContentView.swift in Sources */,
 				09028DA228DDF02200B3BBD6 /* CaseStudy_NavigationApp.swift in Sources */,
 				098B048728DEDA6800BA2964 /* CounterFeature.swift in Sources */,
 				098B048128DED96100BA2964 /* LoadThenNavigationFeature.swift in Sources */,
-				098B048C28E0659A00BA2964 /* RootFeature.swift in Sources */,
 				098B048528DED98200BA2964 /* CounterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
