@@ -11,13 +11,13 @@ struct LoadThenNavigateListView: View {
     let store: Store<LoadThenNavigateListState, LoadThenNavigateListAction>
     
     var body: some View {
-        WithViewStore(self.store) { viewStore in
+        WithViewStore(store) { viewStore in
             Form {
                 Section(header: Text(readMe)) {
                     ForEach(viewStore.rows) { row in
                         NavigationLink(
                             destination: IfLetStore(
-                                self.store.scope(
+                                store.scope(
                                     state: \.selection?.value,
                                     action: LoadThenNavigateListAction.counter
                                 )
@@ -47,7 +47,7 @@ struct LoadThenNavigateListView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct LoadThenNavigateListView_Previews: PreviewProvider {
     static var previews: some View {
         LoadThenNavigateListView(
             store: Store(

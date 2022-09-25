@@ -14,6 +14,7 @@ struct CaseStudy_NavigationApp: App {
                     )
                 )
             }
+//            SimpleNaviView()
         }
     }
 }
